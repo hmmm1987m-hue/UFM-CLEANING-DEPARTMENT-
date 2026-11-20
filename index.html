@@ -536,7 +536,7 @@
             gap: 6px;
         }
 
-        /* ================= الفيديوهات (4 خانات) ================= */
+        /* ================= الفيديوهات (4 خانات تشغيل مباشر) ================= */
         .videos-wrapper {
             background: linear-gradient(180deg, #ffffff 0%, #f7fbf9 100%);
             border-radius: var(--radius-lg);
@@ -558,57 +558,25 @@
             border-radius: var(--radius-md);
             overflow: hidden;
             box-shadow: 0 8px 22px rgba(0, 59, 40, 0.08);
-            border: 1px solid rgba(0, 104, 71, 0.14);
+            border: 1.5px solid rgba(0, 104, 71, 0.16);
             transition: all 0.3s ease;
         }
 
         .vid-card:hover { transform: translateY(-4px); border-color: var(--gold); }
 
-        .vid-screen {
+        .vid-player-wrap {
             position: relative;
             aspect-ratio: 16 / 10;
-            background: linear-gradient(135deg, #003825 0%, #006847 100%);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            padding: 16px;
-            text-align: center;
+            background: #002b1c;
             overflow: hidden;
         }
 
-        .vid-screen::before {
-            content: "";
-            position: absolute;
-            inset: 8px;
-            border: 1px dashed rgba(200, 162, 82, 0.45);
-            border-radius: 12px;
-            pointer-events: none;
-        }
-
-        .play-ring {
-            width: 54px;
-            height: 54px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.15);
-            border: 2px solid var(--gold);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.3rem;
-            color: var(--gold-light);
-            margin-bottom: 10px;
-            box-shadow: 0 0 20px rgba(200, 162, 82, 0.3);
-        }
-
-        .vid-num {
-            font-size: 0.78rem;
-            font-weight: 800;
-            background: rgba(0, 0, 0, 0.3);
-            padding: 3px 12px;
-            border-radius: 20px;
-            color: var(--gold-light);
+        .vid-player-wrap video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            background: #002b1c;
         }
 
         .vid-caption { padding: 14px; text-align: center; }
@@ -947,26 +915,27 @@
             </div>
         </div>
 
-        <!-- ================= الفيديوهات (4 خانات) ================= -->
+        <!-- ================= الفيديوهات (4 مشغلات مباشرة) ================= -->
         <section class="videos-wrapper" id="videos-section">
             <div class="sec-header" style="border-bottom:none; margin-bottom:6px; padding-bottom:0;">
                 <div class="sec-title-group">
                     <div class="sec-icon"><i class="fa-solid fa-film"></i></div>
                     <div>
-                        <h3>لقطات حية من مواقع العمل (4 فيديوهات)</h3>
+                        <h3>لقطات حية من مواقع العمل</h3>
                         <span class="en">Field Operations Video Showcase</span>
                     </div>
                 </div>
             </div>
             <p style="font-size:0.9rem; color:var(--text-sub);">
-                مساحة مخصصة لاستعراض فيديوهات فرق العمل والمعدات الحديثة في الميدان:
+                شاهد فرق العمل والمعدات الحديثة لإدارة النظافة في الميدان:
             </p>
 
             <div class="videos-grid-4">
                 <div class="vid-card">
-                    <div class="vid-screen">
-                        <div class="play-ring"><i class="fa-solid fa-play"></i></div>
-                        <span class="vid-num en">VIDEO 01</span>
+                    <div class="vid-player-wrap">
+                        <video controls playsinline preload="metadata" poster="prepare.jpg" onplay="handleVideoPlay(this)">
+                            <source src="video1.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="vid-caption">
                         <h5>النظافة اليومية للمرافق</h5>
@@ -975,9 +944,10 @@
                 </div>
 
                 <div class="vid-card">
-                    <div class="vid-screen">
-                        <div class="play-ring"><i class="fa-solid fa-play"></i></div>
-                        <span class="vid-num en">VIDEO 02</span>
+                    <div class="vid-player-wrap">
+                        <video controls playsinline preload="metadata" poster="facades.jpg" onplay="handleVideoPlay(this)">
+                            <source src="video2.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="vid-caption">
                         <h5>تنظيف وصيانة الواجهات</h5>
@@ -986,9 +956,10 @@
                 </div>
 
                 <div class="vid-card">
-                    <div class="vid-screen">
-                        <div class="play-ring"><i class="fa-solid fa-play"></i></div>
-                        <span class="vid-num en">VIDEO 03</span>
+                    <div class="vid-player-wrap">
+                        <video controls playsinline preload="metadata" poster="sustainable.jpg" onplay="handleVideoPlay(this)">
+                            <source src="video3.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="vid-caption">
                         <h5>المعدات الحديثة والتعقيم</h5>
@@ -997,9 +968,10 @@
                 </div>
 
                 <div class="vid-card">
-                    <div class="vid-screen">
-                        <div class="play-ring"><i class="fa-solid fa-play"></i></div>
-                        <span class="vid-num en">VIDEO 04</span>
+                    <div class="vid-player-wrap">
+                        <video controls playsinline preload="metadata" poster="team.jpg" onplay="handleVideoPlay(this)">
+                            <source src="video4.mp4" type="video/mp4">
+                        </video>
                     </div>
                     <div class="vid-caption">
                         <h5>جاهزية المواقع والفرق</h5>
@@ -1156,6 +1128,18 @@
                 icon.className = 'fa-solid fa-volume-xmark';
                 label.textContent = 'تشغيل الصوت';
             }
+        }
+
+        // إيقاف الموسيقى تلقائياً عند تشغيل أي فيديو وإيقاف الفيديوهات الأخرى
+        function handleVideoPlay(currentVideo) {
+            if (isSoundOn) {
+                stopInspiringMusic();
+            }
+            document.querySelectorAll('video').forEach(vid => {
+                if (vid !== currentVideo && !vid.paused) {
+                    vid.pause();
+                }
+            });
         }
 
         function playFlipEffect() {
